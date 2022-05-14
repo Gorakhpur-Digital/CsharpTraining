@@ -3,6 +3,9 @@ class Program
 {
     static void Main()
     {
+
+        #region built in type
+
         /*
          
         Built -in type in c#
@@ -15,8 +18,8 @@ class Program
         */
 
         // get min and max
-        Console.WriteLine(int.MinValue);
-        Console.WriteLine(int.MaxValue);
+        //Console.WriteLine(int.MinValue);
+        //Console.WriteLine(int.MaxValue);
 
         // Implicit Conversion
         byte num = 100;
@@ -29,8 +32,39 @@ class Program
         int num4 = 0;
         bool result = int.TryParse(num2, out num4);
 
-        Console.WriteLine(num1);
-        Console.WriteLine(num3);
-        Console.WriteLine(num4);
+        //Console.WriteLine(num1);
+        //Console.WriteLine(num3);
+        //Console.WriteLine(num4);
+
+        #endregion
+
+        #region Operator
+        //Assignment Operators - =
+        //Arthmetic Operators - +, -, *, /, %
+        //Comparison Operators - ==, !=, >, >=, <, <=
+        //Conditional Operators - &&, ||
+        //Ternary Operators - ?:
+        //Null Coalescing Operators - ??
+
+        //string studentName = "Arvind Shukla";
+
+        int num5 = 6; int num6 = 7;
+
+        //bool result1 = num5 < 6 && num5 == 7;
+
+        if (num5 < 7)
+        {
+            //Console.WriteLine("if block");
+        }
+        else
+        {
+            //Console.WriteLine("else block");
+        }
+
+        int r = num5 > 7 ? 100 : 200;
+        Console.WriteLine(r);
+
+        #endregion
+
     }
 }
