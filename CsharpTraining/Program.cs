@@ -66,5 +66,30 @@ class Program
 
         #endregion
 
+        #region if else block
+
+        int age = 20;
+
+        if (age == 9)
+        {
+            Console.WriteLine("your age is 9");
+        }
+        else if (age == 10)
+        {
+            Console.WriteLine("your age is 10");
+        }
+        else if (age == 15)
+        {
+            Console.WriteLine("your age is 15");
+        }
+        else if (age == 20)
+        {
+            Console.WriteLine("your age is 20");
+        }
+
+
+
+        #endregion
+
     }
 }
