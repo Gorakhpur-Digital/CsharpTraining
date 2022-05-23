@@ -3,81 +3,33 @@ class Program
 {
     static void Main()
     {
-        #region Task 1
-        // Task 1st user login validation
-
-        /*
-        start:
-        Console.WriteLine("Please enter your login id");
-        string loginId = Console.ReadLine();
-
-        Console.WriteLine("Please enter your password");
-        string password = Console.ReadLine();
-
-        if(loginId == "admin" && password == "admin")
+        /* 
+        for (int start = 1; start <= 5; start++)
         {
-            Console.WriteLine("Login successfully");
-        }
-        else
-        {
-            Console.WriteLine("Invalid login id or password");
-            goto start;
-        }
-        */
-
-        #endregion
-
-        #region Loop
-
-        /*
-        int start = 0;
-        while (start < 10)
-        {
-            Console.WriteLine(start);
-
-            start++;
-        }
-        */
-
-        // while loop example
-
-        /*
-        bool start = true;
-        while (start == true)
-        {
-            Console.WriteLine("Enter your login id");
-            string loginId = Console.ReadLine();
-
-            Console.WriteLine("Enter your password");
-            string password = Console.ReadLine();
-
-            if(loginId == "admin" && password == "admin")
+            if (start == 3 || start == 4)
             {
-                Console.WriteLine("Welcome login successfully"); 
-                start = false;
+                break;
             }
-            else
-            {
-                Console.WriteLine("Invalid login id or password");
-            }                
-
+            Console.WriteLine(start);
         }
 
-        Console.WriteLine("Loop End.....");
+        Console.WriteLine("Loop End");
         */
 
-        //do while loop
+        int[] i = new int[5];
 
+        i[0] = 10;
+        i[1] = 20;
+        i[2] = 30;
+        i[3] = 40;
+        i[4] = 50;
 
-
-        int num = 0;
-        do
+        foreach (int a in i)
         {
-            Console.WriteLine("do while "  + num);
-            num++;
-        } while (num < 10);
+            Console.WriteLine(a);
+        }
 
-        #endregion
+        Console.WriteLine("Loop End");
 
     }
 }
