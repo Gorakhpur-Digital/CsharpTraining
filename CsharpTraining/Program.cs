@@ -3,33 +3,28 @@ class Program
 {
     static void Main()
     {
-        /* 
-        for (int start = 1; start <= 5; start++)
-        {
-            if (start == 3 || start == 4)
-            {
-                break;
-            }
-            Console.WriteLine(start);
-        }
+        int[] age = new int[3];
 
-        Console.WriteLine("Loop End");
-        */
+        age[0] = 10;
+        age[1] = 20;
+        age[2] = 30;
+        //age[3] = 30;
+        //age[4] = 40;
 
-        int[] i = new int[5];
-
-        i[0] = 10;
-        i[1] = 20;
-        i[2] = 30;
-        i[3] = 40;
-        i[4] = 50;
-
-        foreach (int a in i)
+        foreach (int a in age)
         {
             Console.WriteLine(a);
         }
 
-        Console.WriteLine("Loop End");
+        for(int i = 0; i < age.Length; i++) 
+        {
+            int value = age[i]; 
+            Console.WriteLine(value);
+        }
+
+        Console.WriteLine("loop end");
+
+         
 
     }
 }
