@@ -1,30 +1,32 @@
 ﻿using System;
 class Program
 {
-    static void Main()
+    public static void Main()
     {
-        int[] age = new int[3];
 
-        age[0] = 10;
-        age[1] = 20;
-        age[2] = 30;
-        //age[3] = 30;
-        //age[4] = 40;
+        Program p = new Program(); // instance/object  creation 
+        p.PrintNumber(10);// not static member
 
-        foreach (int a in age)
-        {
-            Console.WriteLine(a);
-        }
+        p.PrintNumber(10, 20);// not static member
 
-        for(int i = 0; i < age.Length; i++) 
-        {
-            int value = age[i]; 
-            Console.WriteLine(value);
-        }
+        p.PrintNumber(10, 20, 30);// not static member
 
-        Console.WriteLine("loop end");
 
-         
+        //Program.DisplayName(); // static member
 
+        //string name = 10;
     }
+
+    public void PrintNumber(int num1 = 0, int num2 = 0, int num3 = 0)
+    {
+        Console.WriteLine("num1 {0} num2 {1} num3 {2}", num1, num2, num3);
+    }
+
+
+    public static void DisplayName()
+    {
+        Console.WriteLine("Display name");
+    }
+
+
 }
