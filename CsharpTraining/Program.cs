@@ -3,30 +3,41 @@ class Program
 {
     public static void Main()
     {
+        Employee emp = new Employee();
+        Employee emp1 = new Employee();
+        Employee emp2 = new Employee();
 
-        Program p = new Program(); // instance/object  creation 
-        p.PrintNumber(10);// not static member
-
-        p.PrintNumber(10, 20);// not static member
-
-        p.PrintNumber(10, 20, 30);// not static member
-
-
-        //Program.DisplayName(); // static member
-
-        //string name = 10;
+        emp.GetEmployeeName();
     }
-
-    public void PrintNumber(int num1 = 0, int num2 = 0, int num3 = 0)
-    {
-        Console.WriteLine("num1 {0} num2 {1} num3 {2}", num1, num2, num3);
-    }
-
-
-    public static void DisplayName()
-    {
-        Console.WriteLine("Display name");
-    }
-
 
 }
+
+public class Employee
+{
+    // static constructor
+    static Employee()
+    {
+        Console.WriteLine("static constructor calling....");
+    }
+
+    // constroctor
+    public Employee()
+    {
+        Console.WriteLine("Non static constructor calling....");
+    }
+
+    // create method
+    public string GetEmployeeName()
+    {
+        string name = "Arvind Shukla";
+        return name;
+    }
+
+    public string GetEmployeeSalary()
+    {
+        string name = "Arvind Shukla";
+        return name;
+    }
+}
+
+
