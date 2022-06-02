@@ -3,41 +3,41 @@ class Program
 {
     public static void Main()
     {
-        Employee emp = new Employee();
-        Employee emp1 = new Employee();
-        Employee emp2 = new Employee();
+        MyNameSpace.Employee emp = new MyNameSpace.Employee("Arvind",100);
+        string name = emp.GetEmployeeName();
+        int salary = emp.GetEmployeeSalary();
 
-        emp.GetEmployeeName();
+        Console.WriteLine("Employee Name {0} and Salary {1}",name,salary);
     }
 
 }
 
-public class Employee
+namespace MyNameSpace
 {
-    // static constructor
-    static Employee()
+    public class Employee
     {
-        Console.WriteLine("static constructor calling....");
+        string EmployeeName;
+        int EmployeeSalary;
+        public Employee(string name, int salary)
+        {
+            this.EmployeeName = name;
+            this.EmployeeSalary = salary;
+        }
+
+        public string GetEmployeeName()
+        {
+            return EmployeeName;
+        }
+
+        public int GetEmployeeSalary()
+        {
+            return EmployeeSalary;
+        }
+
+
     }
 
-    // constroctor
-    public Employee()
-    {
-        Console.WriteLine("Non static constructor calling....");
-    }
-
-    // create method
-    public string GetEmployeeName()
-    {
-        string name = "Arvind Shukla";
-        return name;
-    }
-
-    public string GetEmployeeSalary()
-    {
-        string name = "Arvind Shukla";
-        return name;
-    }
 }
+
 
 
