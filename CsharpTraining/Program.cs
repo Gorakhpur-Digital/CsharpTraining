@@ -3,41 +3,53 @@ class Program
 {
     public static void Main()
     {
-        MyNameSpace.Employee emp = new MyNameSpace.Employee("Arvind",100);
-        string name = emp.GetEmployeeName();
-        int salary = emp.GetEmployeeSalary();
+        Employee emp = new Employee();
+        emp.FirstName = "Vishal";
+        emp.LastName = "Chaudhary";
+        emp.GetSalary = 10000;
 
-        Console.WriteLine("Employee Name {0} and Salary {1}",name,salary);
+
+        string employeeName = emp.GetFullName();
+        int salary = emp.GetSalary;
+
+        Console.WriteLine(employeeName);
+        Console.WriteLine(salary);
     }
 
 }
 
-namespace MyNameSpace
+// by default class access modifire "Internal"
+class Employee
 {
-    public class Employee
+    // by default clsss member access modifire "Private"
+    public string FirstName = "Arvind";
+    public string LastName = "Shukla";
+    private int Salary;
+
+    public string Department { get; set; }
+
+    // property
+    public int GetSalary
     {
-        string EmployeeName;
-        int EmployeeSalary;
-        public Employee(string name, int salary)
+        get
         {
-            this.EmployeeName = name;
-            this.EmployeeSalary = salary;
+            return this.Salary;
         }
-
-        public string GetEmployeeName()
+        set
         {
-            return EmployeeName;
+            if(value < 0)
+            {
+                throw new Exception("salary cant be less than 0");
+            }
+            this.Salary = value;
         }
-
-        public int GetEmployeeSalary()
-        {
-            return EmployeeSalary;
-        }
-
-
+    }
+    public string GetFullName()
+    {
+        //string fullName = FirstName + " " + LastName;
+        string fullName = string.Format("{0} {1}", this.FirstName, this.LastName);
+        return fullName;
     }
 
+  
 }
-
-
-
