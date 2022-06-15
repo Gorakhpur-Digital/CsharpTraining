@@ -7,29 +7,43 @@ class Program
 {
     public static void Main()
     {
-        EmployeeBl bl = new EmployeeBl();
-        List<EmployeeModel> empList =  bl.EmployeeAdd(3, "Abhay");
+        List<Employee> empList = new List<Employee>();
 
-
-        foreach (EmployeeModel employeeInfo in empList)
+        empList.Add(new Employee()
         {
-            string name = employeeInfo.FirstName;
-            int employeeId = employeeInfo.EmployeeID;
+            EmployeeId = 1,
+            Name = "Arvind",
+            MobileNo = "1234567"
+        });
 
-            Console.WriteLine("Employee Id:{0} Employee Name:{1}",employeeId,name);
-        }
+        empList.Add(new Employee()
+        {
+            EmployeeId = 2,
+            Name = "Abhay",
+            MobileNo = "9876543"
+        });
 
-        /*
-            Student id, 
-            Student Name, 
-            Father Name, 
-            Mobile No, 
-            Fees, 
-            Admission Status
-         */
+        empList.Add(new Employee()
+        {
+            EmployeeId = 3,
+            Name = "Vishal",
+            MobileNo = "37654329"
+        });
+
+        //Employee e =  empList[1];
+        //Console.WriteLine(e.Name);
+
+        Console.WriteLine("{0} {1} {2}", empList[0].EmployeeId, empList[0].Name, empList[0].MobileNo);
+
         
-
 
     }
 
+}
+
+class Employee
+{
+    public int EmployeeId { get; set; }
+    public string Name { get; set; }
+    public string MobileNo { get; set; }
 }
