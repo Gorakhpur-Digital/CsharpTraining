@@ -8,22 +8,24 @@ class Program
 {
     public static void Main()
     {
-        // late binding example
-        Assembly excutingAssemply = Assembly.GetExecutingAssembly();
-        Type customerType = excutingAssemply.GetType("Customer");
-        object customerInstance = Activator.CreateInstance(customerType);
-        MethodInfo getFullNameMethod = customerType.GetMethod("GetFullName");
-        string[] parameter = { "Gorakhpur", "Digital" };
-        string fullName = (string)getFullNameMethod.Invoke(customerInstance,parameter);
-        Console.WriteLine(fullName);
+        bool equal = Calculator.AreEqual(10, 20);
+        if (equal)
+        {
+            Console.WriteLine("value are equal");
+        }
+        else
+        {
+            Console.WriteLine("value are not equal");
+        }
+        
     }
 }
 
-public class Customer
+public class Calculator
 {
-    public string GetFullName(string firstName, string lastName)
+    public static bool AreEqual<T>(T value1, T value2)
     {
-        return firstName + " " + lastName;
+        return value1.Equals(value2);
     }
 
 }
