@@ -10,9 +10,8 @@ class Program
 {
     public static void Main()
     {
-        List<int> numbers = new List<int>() { 10,40,20,50,30};
+        List<int> numbers = new List<int>() { 10, 40, 20, 50, 30 };
         numbers.Sort();
-
 
         List<Customer> list = new List<Customer>() {
             new Customer { Id = 1,Name = "Arvind", Salary = 5000 },
@@ -20,23 +19,27 @@ class Program
             new Customer { Id = 3,Name = "Vishal", Salary = 3000 },
             new Customer { Id = 4,Name = "Aman", Salary = 2000 },
         };
+        /*
+        Comparison<Customer> comparison = new Comparison<Customer>(CompareCustomer);
 
-        Console.WriteLine("sort by salary");
-        list.Sort();
-        
-        foreach (Customer cust in list)
+        static int CompareCustomer(Customer x, Customer y)
         {
-            Console.WriteLine("Name = {0} Salary = {1}", cust.Name, cust.Salary);
+            return x.Id.CompareTo(y.Id);
+        }
+        list.Sort(comparison);
+        */
+        //list.Sort(delegate (Customer c1, Customer c2) { return c1.Id.CompareTo(c2.Id); });
+
+        list.Sort((c1, c2) => c1.Id.CompareTo(c2.Id));
+
+        list.Reverse();
+
+        foreach (Customer customer in list)
+        {
+            Console.WriteLine("id = {0} name = {1} salary = {2}", customer.Id, customer.Name, customer.Salary);
         }
 
-        Console.WriteLine("sort by name");
-        SortByName sortByName = new SortByName();
-        list.Sort(sortByName);
-        
-        foreach (Customer cust in list)
-        {
-            Console.WriteLine("Name = {0} Salary = {1}", cust.Name, cust.Salary);
-        }
+
     }
 }
 
