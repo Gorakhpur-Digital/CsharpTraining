@@ -10,27 +10,30 @@ class Program
 {
     public static void Main()
     {
-        Queue<Customer> queue = new Queue<Customer>();
-        queue.Enqueue(new Customer() { Id = 1, Name = "Arvind", Salary = 5000 });
-        queue.Enqueue(new Customer() { Id = 2, Name = "Abhay", Salary = 4000 });
-        queue.Enqueue(new Customer() { Id = 3, Name = "Vishal", Salary = 3000 });
-        
-        /*
-        Customer c = queue.Dequeue();
+        Stack<Customer> stack = new Stack<Customer>();
+        stack.Push(new Customer() { Id = 1, Name = "Arvind", Salary = 5000 });
+        stack.Push(new Customer() { Id = 2, Name = "Abhay", Salary = 4000 });
+        stack.Push(new Customer() { Id = 3, Name = "Vishal", Salary = 3000 });
+
+
+        Customer c = stack.Pop();
         Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c.Id, c.Name, c.Salary);
+        Console.WriteLine("Item count in stack {0}", stack.Count);
 
-        Customer c1 = queue.Dequeue();
+        Customer c1 = stack.Pop();
         Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c1.Id, c1.Name, c1.Salary);
+        Console.WriteLine("Item count in stack {0}", stack.Count);
 
-        Customer c2 = queue.Dequeue();
+        Customer c2 = stack.Pop();
         Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c2.Id, c2.Name, c2.Salary);
-        */
+        Console.WriteLine("Item count in stack {0}", stack.Count);
 
-        Customer c = queue.Peek();
-        Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c.Id, c.Name, c.Salary);
 
-        Customer c1 = queue.Peek();
-        Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c1.Id, c1.Name, c1.Salary);
+        //Customer c = stack.Peek();
+        //Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c.Id, c.Name, c.Salary);
+
+        //Customer c1 = stack.Peek();
+        //Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c1.Id, c1.Name, c1.Salary);
 
 
 
