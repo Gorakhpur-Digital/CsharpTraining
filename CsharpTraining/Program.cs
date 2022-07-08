@@ -10,34 +10,30 @@ class Program
 {
     public static void Main()
     {
-        List<int> numbers = new List<int>() { 10, 40, 20, 50, 30 };
-        numbers.Sort();
-
-        List<Customer> list = new List<Customer>() {
-            new Customer { Id = 1,Name = "Arvind", Salary = 5000 },
-            new Customer { Id = 2,Name = "Abhay", Salary = 4000 },
-            new Customer { Id = 3,Name = "Vishal", Salary = 3000 },
-            new Customer { Id = 4,Name = "Aman", Salary = 2000 },
-        };
+        Queue<Customer> queue = new Queue<Customer>();
+        queue.Enqueue(new Customer() { Id = 1, Name = "Arvind", Salary = 5000 });
+        queue.Enqueue(new Customer() { Id = 2, Name = "Abhay", Salary = 4000 });
+        queue.Enqueue(new Customer() { Id = 3, Name = "Vishal", Salary = 3000 });
+        
         /*
-        Comparison<Customer> comparison = new Comparison<Customer>(CompareCustomer);
+        Customer c = queue.Dequeue();
+        Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c.Id, c.Name, c.Salary);
 
-        static int CompareCustomer(Customer x, Customer y)
-        {
-            return x.Id.CompareTo(y.Id);
-        }
-        list.Sort(comparison);
+        Customer c1 = queue.Dequeue();
+        Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c1.Id, c1.Name, c1.Salary);
+
+        Customer c2 = queue.Dequeue();
+        Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c2.Id, c2.Name, c2.Salary);
         */
-        //list.Sort(delegate (Customer c1, Customer c2) { return c1.Id.CompareTo(c2.Id); });
 
-        list.Sort((c1, c2) => c1.Id.CompareTo(c2.Id));
+        Customer c = queue.Peek();
+        Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c.Id, c.Name, c.Salary);
 
-        list.Reverse();
+        Customer c1 = queue.Peek();
+        Console.WriteLine("Id = {0} Name = {1} Salary = {2}", c1.Id, c1.Name, c1.Salary);
 
-        foreach (Customer customer in list)
-        {
-            Console.WriteLine("id = {0} name = {1} salary = {2}", customer.Id, customer.Name, customer.Salary);
-        }
+
+
 
 
     }
