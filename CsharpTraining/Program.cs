@@ -7,34 +7,49 @@ using System.Threading;
 using CsharpTraining.Bl;
 using CsharpTraining.Model;
 
+public delegate void SumOfCallBackDelegate(int sum);
 class Program
 {
-    public static void Main() {
+    public static void PrintSumOfNumber(int sum)
+    {
+        Console.WriteLine("Total of sum {0}", sum);
+    }
+    public static void Main()
+    {
 
         Console.WriteLine("Please enter number");
-        object target = Console.ReadLine();
+        int target = int.Parse(Console.ReadLine());
 
-        //ParameterizedThreadStart parameterizedThreadStart = new ParameterizedThreadStart(Program.PrintNumber);
-        //Thread thread = new Thread(parameterizedThreadStart);
+        SumOfCallBackDelegate sumOfCallBack = new SumOfCallBackDelegate(PrintSumOfNumber);
 
-        Thread thread = new Thread(Program.PrintNumber);
-        
+        Numbre number = new Numbre(target, sumOfCallBack) ;
+        Thread thread = new Thread(number.PrintNumber);
+
         Console.WriteLine("Print Number");
-        thread.Start(target);
-        
+        thread.Start();
+
+    }
+}
+
+class Numbre
+{
+    int _target;
+    SumOfCallBackDelegate _sumOfCallBackDelegate;
+    public Numbre(int target, SumOfCallBackDelegate sumOfCallBackDelegate)
+    {
+        _target = target;
+        _sumOfCallBackDelegate = sumOfCallBackDelegate;
     }
 
-    public static void PrintNumber(object target)
+    public void PrintNumber()
     {
-        int number = 0;
-        bool isParse = int.TryParse(target.ToString(), out number);
-        if (isParse)
+        int sum = 0;
+        for (int i = 0; i <= _target; i++)
         {
-            for (int i = 0; i <= number; i++)
-            {
-                Console.WriteLine(i);
-            }
+            sum  = sum + i;
         }
-        
+
+        _sumOfCallBackDelegate(sum);
+
     }
 }
