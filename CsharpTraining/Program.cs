@@ -11,20 +11,30 @@ class Program
 {
     public static void Main() {
 
-        //Thread thread = new Thread(Program.PrintNUmber);
-        //Thread thread = new Thread(new ThreadStart(Program.PrintNUmber));
-        //Thread thread = new Thread(delegate () { Program.PrintNUmber(); });
-        Thread thread = new Thread(x => Program.PrintNUmber());
+        Console.WriteLine("Please enter number");
+        object target = Console.ReadLine();
+
+        //ParameterizedThreadStart parameterizedThreadStart = new ParameterizedThreadStart(Program.PrintNumber);
+        //Thread thread = new Thread(parameterizedThreadStart);
+
+        Thread thread = new Thread(Program.PrintNumber);
+        
         Console.WriteLine("Print Number");
-        thread.Start();
+        thread.Start(target);
         
     }
 
-    public static void PrintNUmber()
+    public static void PrintNumber(object target)
     {
-        for (int i = 0; i < 10; i++)
+        int number = 0;
+        bool isParse = int.TryParse(target.ToString(), out number);
+        if (isParse)
         {
-            Console.WriteLine(i);
+            for (int i = 0; i <= number; i++)
+            {
+                Console.WriteLine(i);
+            }
         }
+        
     }
 }
