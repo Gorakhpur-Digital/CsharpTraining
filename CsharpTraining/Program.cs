@@ -10,46 +10,33 @@ using CsharpTraining.Model;
 public delegate void SumOfCallBackDelegate(int sum);
 class Program
 {
-    public static void PrintSumOfNumber(int sum)
-    {
-        Console.WriteLine("Total of sum {0}", sum);
-    }
     public static void Main()
     {
+        List<Employee> employees = new List<Employee>() { 
+           new Employee { Id = 101, Name = "Arvind"},
+           new Employee { Id = 102, Name = "Abhay"},
+           new Employee { Id = 103, Name = "Akash"},
+           new Employee { Id = 104, Name = "Vivek"},
+        };
+        //Predicate<Employee> employeePredicate = new Predicate<Employee>(FindEmployee);
+        //Employee emp =  employees.Find(delegate(Employee emp) { return emp.Id == 103; });
+        Employee emp = employees.Find(emp => emp.Id == 101);
 
-        Console.WriteLine("Please enter number");
-        int target = int.Parse(Console.ReadLine());
+        Console.WriteLine("Id = {0} Name = {1}", emp.Id, emp.Name);
 
-        SumOfCallBackDelegate sumOfCallBack = new SumOfCallBackDelegate(PrintSumOfNumber);
+        //bool FindEmployee(Employee emp)
+        //{
+        //    return emp.Id == 102;
+        //}
 
-        Numbre number = new Numbre(target, sumOfCallBack) ;
-        Thread thread = new Thread(number.PrintNumber);
 
-        Console.WriteLine("Print Number");
-        thread.Start();
 
     }
 }
 
-class Numbre
+class Employee
 {
-    int _target;
-    SumOfCallBackDelegate _sumOfCallBackDelegate;
-    public Numbre(int target, SumOfCallBackDelegate sumOfCallBackDelegate)
-    {
-        _target = target;
-        _sumOfCallBackDelegate = sumOfCallBackDelegate;
-    }
-
-    public void PrintNumber()
-    {
-        int sum = 0;
-        for (int i = 0; i <= _target; i++)
-        {
-            sum  = sum + i;
-        }
-
-        _sumOfCallBackDelegate(sum);
-
-    }
+    public int Id { get; set; }
+    public string Name { get; set; }
 }
+
