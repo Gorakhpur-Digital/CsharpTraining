@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Threading;
-using CsharpTraining.Bl;
-using CsharpTraining.Model;
+using System.Linq;
 
 public delegate void SumOfCallBackDelegate(int sum);
 class Program
@@ -18,19 +13,15 @@ class Program
            new Employee { Id = 103, Name = "Akash"},
            new Employee { Id = 104, Name = "Vivek"},
         };
-        //Predicate<Employee> employeePredicate = new Predicate<Employee>(FindEmployee);
-        //Employee emp =  employees.Find(delegate(Employee emp) { return emp.Id == 103; });
-        Employee emp = employees.Find(emp => emp.Id == 101);
+        //Func<Employee, string> selector = emp => "Name = " + emp.Name;
+        //IEnumerable<string> names =  employees.Select(selector);
 
-        Console.WriteLine("Id = {0} Name = {1}", emp.Id, emp.Name);
+        IEnumerable<string> names = employees.Select(emp => "Name = " + emp.Name) ;
 
-        //bool FindEmployee(Employee emp)
-        //{
-        //    return emp.Id == 102;
-        //}
-
-
-
+        foreach (string name in names)
+        {
+            Console.WriteLine(name);
+        }
     }
 }
 
