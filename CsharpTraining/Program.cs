@@ -1,33 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
-public delegate void SumOfCallBackDelegate(int sum);
 class Program
 {
-    public static void Main()
+    public static void Main(string[] args)
     {
-        List<Employee> employees = new List<Employee>() { 
-           new Employee { Id = 101, Name = "Arvind"},
-           new Employee { Id = 102, Name = "Abhay"},
-           new Employee { Id = 103, Name = "Akash"},
-           new Employee { Id = 104, Name = "Vivek"},
-        };
-        //Func<Employee, string> selector = emp => "Name = " + emp.Name;
-        //IEnumerable<string> names =  employees.Select(selector);
 
-        IEnumerable<string> names = employees.Select(emp => "Name = " + emp.Name) ;
+        Console.WriteLine("Starting");
 
-        foreach (string name in names)
-        {
-            Console.WriteLine(name);
-        }
+        Worker worker = new Worker();
+        worker.DoWork();
+        //while (!worker.IsComplete)
+        //{
+        //    Console.Write("....");
+        //    Thread.Sleep(100);
+        //}
+        Console.WriteLine("Done");
+        Console.ReadKey();
     }
+
 }
 
-class Employee
+class Worker
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-}
 
+    public bool IsComplete { get; set; }
+    public async void DoWork()
+    {
+        this.IsComplete = false;
+        Console.WriteLine("Doing work");
+        await LongOpration();
+        Console.WriteLine("Work Completed");
+        IsComplete = true;
+    }
+    private Task LongOpration()
+    {
+        return Task.Factory.StartNew(() =>
+        {
+            Console.WriteLine("Working");
+            Thread.Sleep(2000);
+        });
+
+    }
+
+}
